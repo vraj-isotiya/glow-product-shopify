@@ -159,6 +159,7 @@
 }
 
 .tr-card {
+  position: relative;
   flex: 0 0 auto;
   width: 170px;
   background: white;
@@ -171,6 +172,18 @@
 .tr-card:hover,
 .tr-card.active {
   border: 3px solid #f82930;
+}
+
+.tr-card-badge {
+  position: absolute;
+  background-color: #fc2a31;
+  color: white;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: bold;
+  padding: 5px 15px 5px 12px;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+  z-index: 2;
 }
 
 .tr-card img {
@@ -226,7 +239,15 @@
 
 @media (max-width: 480px) {
   .tr-card {
-    width: 120px;
+    max-width: 150px;
+  }
+
+  .tr-card-body h4 {
+    font-size: 1.3rem;
+  }
+
+  .tr-card-body p {
+    font-size: 1.2rem;
   }
 
   .tr-marker {
@@ -251,6 +272,10 @@
   .tr-vehicle-selector {
     gap: 0.5rem;
     padding: 1rem 0;
+  }
+
+  .tr-card-badge {
+    padding: 5px 11px 7px 9px;
   }
 }
 
