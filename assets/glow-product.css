@@ -1,0 +1,276 @@
+/* Base Reset */
+.tr-glow-product {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  color: #333;
+}
+
+/* Container */
+.tr-container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 1rem;
+  background-color: #232323;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Vehicle Selector */
+.tr-vehicle-selector-wrapper {
+  background-color: black;
+  max-width: 1200px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 0 1rem;
+}
+
+.tr-vehicle-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 0;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
+.tr-vehicle-selector button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  position: relative;
+}
+
+.tr-vehicle-selector button img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.tr-vehicle-selector button span {
+  display: block;
+  position: relative;
+  padding: 0.2rem 0;
+  text-transform: uppercase;
+}
+
+.tr-vehicle-selector button span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0%;
+  background-color: #fc2a31;
+  transform: translateX(-50%);
+}
+
+.tr-vehicle-selector button.active {
+  color: #fc2a31;
+}
+
+.tr-vehicle-selector button.active span::after {
+  width: 100%;
+}
+
+/* Image Map */
+.tr-image-map-wrapper {
+  position: relative;
+  width: 100%;
+  margin: auto;
+}
+
+.tr-carousel-images {
+  display: flex;
+  height: 100%;
+}
+
+.tr-carousel-images img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.tr-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background-color: transparent;
+  color: #fc2a31;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.tr-prev-btn {
+  left: 10px;
+}
+
+.tr-next-btn {
+  right: 10px;
+}
+
+/* Markers */
+.tr-marker {
+  position: absolute;
+  color: white;
+  border-radius: 50%;
+  border: 3px solid #f82930;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+.tr-marker:hover,
+.tr-marker.active {
+  background-color: #f82930;
+}
+
+/* Card Carousel */
+.tr-card-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  margin-top: 2rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 1rem;
+}
+
+.tr-card-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.tr-card {
+  flex: 0 0 auto;
+  width: 170px;
+  background: white;
+  border: 3px solid #232323;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border 0.3s;
+}
+
+.tr-card:hover,
+.tr-card.active {
+  border: 3px solid #f82930;
+}
+
+.tr-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tr-card-body {
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+}
+
+.tr-card-body h4 {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #111;
+}
+
+.tr-card-body p {
+  font-style: italic;
+  color: #000000;
+  opacity: 0.7;
+}
+
+/* Hide Elements */
+.tr-hidden {
+  display: none;
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (max-width: 768px) {
+  .tr-marker {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.7rem;
+  }
+
+  .tr-card {
+    width: 140px;
+  }
+
+  .tr-card-body h4 {
+    font-size: 0.9rem;
+  }
+
+  .tr-card-body p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tr-card {
+    width: 120px;
+  }
+
+  .tr-marker {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    border: 2px solid #f82930;
+  }
+}
+
+@media (max-width: 630px) {
+  .tr-vehicle-selector button {
+    min-width: 50px;
+  }
+  .tr-vehicle-selector button span {
+    font-size: 1rem;
+  }
+  .tr-vehicle-selector-wrapper {
+    margin: 20px auto;
+    padding: 0 0.5rem;
+  }
+  .tr-vehicle-selector {
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .tr-vehicle-selector button {
+    min-width: 80px;
+  }
+  .tr-vehicle-selector button span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .tr-carousel-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .tr-vehicle-selector button span {
+    font-size: 0.75rem;
+  }
+}

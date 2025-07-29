@@ -1,0 +1,122 @@
+<div class="tr-vehicle-selector-wrapper">
+  <div class="tr-vehicle-selector">
+    <button class="active" data-vehicle="jeep">
+      <img
+        src="{{ 'jeep product top.png' | asset_url }}"
+        alt="Jeep"
+        height=""
+        width="">
+      <span>JEEP</span>
+    </button>
+    <button data-vehicle="truck">
+      <img
+        src="{{ 'truck product top.png' | asset_url }}"
+        alt="Truck"
+        height=""
+        width="">
+      <span>TRUCK</span>
+    </button>
+    <button data-vehicle="car">
+      <img
+        src="{{ 'car product top.png' | asset_url }}"
+        alt="Car"
+        height=""
+        width="">
+      <span>CAR</span>
+    </button>
+    <button data-vehicle="motorcycle">
+      <img
+        src="{{ 'motorcycle product top.png' | asset_url }}"
+        alt="Motorcycle"
+        height=""
+        width="">
+      <span>MOTORCYCLE</span>
+    </button>
+    <button data-vehicle="cybertruck">
+      <img
+        src="{{ 'cybertruck product top.png' | asset_url }}"
+        alt="Cybertruck"
+        height=""
+        width="">
+      <span>CYBERTRUCK</span>
+    </button>
+  </div>
+</div>
+
+<div class="tr-container">
+  <div class="tr-image-map-wrapper">
+    <div class="tr-carousel-images">
+      <img
+        src="{{ 'jeep product.png' | asset_url }}"
+        alt="jeep"
+        data-vehicle="jeep"
+        height=""
+        width="">
+      <img
+        src="{{ 'truck product.png' | asset_url }}"
+        alt="truck"
+        data-vehicle="truck"
+        height=""
+        width="">
+      <img
+        src="{{ 'car product.png' | asset_url }}"
+        alt="car"
+        data-vehicle="car"
+        height=""
+        width="">
+      <img
+        src="{{ 'motorcycle product.png' | asset_url }}"
+        alt="bike"
+        data-vehicle="motorcycle"
+        height=""
+        width="">
+      <img
+        src="{{ 'cybertruck product.png' | asset_url }}"
+        alt="cybertruck"
+        data-vehicle="cybertruck"
+        height=""
+        width="">
+    </div>
+
+    <button class="tr-carousel-btn tr-prev-btn">&#10094;</button>
+    <button class="tr-carousel-btn tr-next-btn">&#10095;</button>
+    <div id="markerContainer"></div>
+  </div>
+  <div class="tr-card-carousel" id="cardStack"></div>
+</div>
+
+<script id="vehicle-products" type="application/json">
+  {
+    {% assign selected_collections = section.settings.vehicle_collections %}
+    {% for collection in selected_collections %}
+      {{ collection.handle | json }} : [
+      {% for product in collections[collection.handle].products %}
+          {
+            "title": {{ product.title | json }},
+            "price": {{ product.price | money_with_currency | json }},
+            "img": {% if product.featured_image %} {{ product.featured_image | image_url | json }} {% else %} null{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Vehicle Product Map",
+    "settings": [
+      {
+        "type": "collection_list",
+        "id": "vehicle_collections",
+        "label": "Select up to 5 collections",
+        "limit": 5
+      }
+    ],
+    "presets": [
+      {
+        "name": "Vehicle Product Map"
+      }
+    ]
+  }
+{% endschema %}
