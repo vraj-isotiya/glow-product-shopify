@@ -116,6 +116,7 @@ buttons.forEach((button) => {
 function renderVehicle(vehicle) {
   markersContainer.innerHTML = "";
   cardStack.innerHTML = "";
+  // cardStack.scrollLeft = 0;
   const parts = vehicleData[vehicle];
 
   parts.forEach((part, index) => {
@@ -152,6 +153,21 @@ function renderVehicle(vehicle) {
         .forEach((el) => el.classList.remove("active"));
       marker.classList.add("active");
       card.classList.add("active");
+
+      // Scroll horizontally to center the card
+      const cardContainer = card.parentElement;
+      const containerRect = cardContainer.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+
+      const scrollLeft =
+        cardContainer.scrollLeft +
+        (cardRect.left - containerRect.left) -
+        (containerRect.width / 2 - cardRect.width / 2);
+
+      cardContainer.scrollTo({
+        left: scrollLeft,
+        behavior: "smooth",
+      });
     });
 
     card.addEventListener("click", () => {
@@ -194,6 +210,8 @@ vehicleButtons.forEach((button) => {
     button.classList.add("active");
 
     renderVehicle(vehicleType);
+
+    cardStack.scrollLeft = 0;
   });
 });
 
