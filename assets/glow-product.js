@@ -60,11 +60,10 @@ for (const type in vehicleData) {
       title: product?.title ?? "",
       price: product?.price ?? "",
       img: product?.img ?? "",
+      url: product?.url ?? "",
     };
   });
 }
-
-console.log(vehicleData);
 
 const vehicleOrder = ["jeep", "truck", "car", "motorcycle", "cybertruck"];
 let currentVehicleIndex = 0;
@@ -130,14 +129,21 @@ function renderVehicle(vehicle) {
 
     const card = document.createElement("div");
     card.className = "tr-card";
-    card.dataset.index = index;
-    card.innerHTML = `
-  <div class="tr-card-badge">${index + 1}</div>
-  <img src="${part.img}" alt="${part.title}" />
-  <div class="tr-card-body">
-    <h4>${part.title}</h4>
-    <p>${part.price}</p>
-  </div>`;
+    card.innerHTML = `<a href="${part.url || "#"}" class="tr-a">
+    <div class="tr-card-badge">${index + 1}</div>
+    <img src="${part.img}" alt="${part.title}" />
+    <div class="tr-card-body">
+      <div class="tr-card-info">
+        <h4>${part.title}</h4>
+        <p>${part.price}</p>
+      </div>
+       <a href="${
+         part.url || "#"
+       }" class="tr-view-btn">VIEW PRODUCT <span>❯</span></a>
+    </div>
+    </a>
+    
+  `;
     cardStack.appendChild(card);
 
     marker.addEventListener("click", () => {

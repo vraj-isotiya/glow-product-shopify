@@ -97,7 +97,8 @@
           {
             "title": {{ product.title | json }},
             "price": {{ product.price | money_with_currency | json }},
-            "img": {% if product.featured_image %} {{ product.featured_image | image_url | json }} {% else %} null{% endif %}
+            "img": {% if product.featured_image %} {{ product.featured_image | image_url | json }} {% else %} null{% endif %},
+          "url": {{ product.url | json }}
         }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     ]{% unless forloop.last %},{% endunless %}
