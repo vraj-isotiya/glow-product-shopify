@@ -229,25 +229,17 @@
   }
 
   .tr-card-body h4 {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
   }
 
   .tr-card-body p {
-    font-size: 0.75rem;
+    font-size: 1.2rem;
   }
 }
 
 @media (max-width: 480px) {
   .tr-card {
     max-width: 150px;
-  }
-
-  .tr-card-body h4 {
-    font-size: 1.3rem;
-  }
-
-  .tr-card-body p {
-    font-size: 1.2rem;
   }
 
   .tr-marker {
@@ -275,7 +267,7 @@
   }
 
   .tr-card-badge {
-    padding: 5px 11px 7px 9px;
+    padding: 5px 10px 5px 8px;
   }
 }
 
