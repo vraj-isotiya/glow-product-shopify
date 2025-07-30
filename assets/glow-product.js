@@ -152,7 +152,6 @@ function renderVehicle(vehicle) {
         .forEach((el) => el.classList.remove("active"));
       marker.classList.add("active");
       card.classList.add("active");
-      card.scrollIntoView({ behavior: "smooth", inline: "center" });
     });
 
     card.addEventListener("click", () => {
